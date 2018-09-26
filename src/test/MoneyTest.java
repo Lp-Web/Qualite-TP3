@@ -18,11 +18,16 @@ public class MoneyTest {
 		oneEur = new Money(1.0, "EUR");
 		oneDoll = new Money(1.0, "USD");
 	}
-	
+
 	@Test
 	public void testConstructeurOK() {
 		assertThat(oneEur.getAmount(), IsEqual.equalTo(1.0));
 		assertThat(oneEur.getCurrency(), IsEqual.equalTo("EUR"));
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testCurrencyConstructeur() {
+		new Money(10, "EMG");
 	}
 
 	@Test(expected = IllegalArgumentException.class)
