@@ -65,6 +65,7 @@ public class MoneyTest {
 		assertThat(oneDoll.getAmount(), IsEqual.equalTo(1.0+1.0/1.29));
 	}
 	
+
 	@Test
 	public void testAddMoneyEUR() {
 		oneEur.add(oneDoll);
@@ -75,5 +76,10 @@ public class MoneyTest {
 	public void testAddMoneyUSD() {
 		oneDoll.add(oneEur);
 		assertThat(oneDoll.getAmount(), IsEqual.equalTo(1.0+1.0/1.29));
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddMoneyCurr() {
+		oneEur.add(1.0, "GBP");
 	}
 }
