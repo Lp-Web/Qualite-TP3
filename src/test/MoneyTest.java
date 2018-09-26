@@ -24,11 +24,6 @@ public class MoneyTest {
 		assertThat(oneEur.getAmount(), IsEqual.equalTo(1.0));
 		assertThat(oneEur.getCurrency(), IsEqual.equalTo("EUR"));
 	}
-	
-	@Test(expected = IllegalArgumentException.class)
-	public void testCurrencyConstructeur() {
-		new Money(10, "EMG");
-	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testConstructeurAmountSupOuEgal0() {
@@ -39,6 +34,12 @@ public class MoneyTest {
 	public void testConstructeurCurrencyNull() {
 		new Money(1.0, null);
 	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testConstructeurCurrencyDiff() {
+		new Money(10, "EMG");
+	}
+	
 	
 	@Test
 	public void testGetter() {
