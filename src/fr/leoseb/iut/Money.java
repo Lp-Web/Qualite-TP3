@@ -18,7 +18,6 @@ public class Money {
 		
 		this.amount = amount;
 		this.currency = currency;
-		
 	}
 
 	public double getAmount() {
@@ -34,6 +33,9 @@ public class Money {
 	}
 
 	public void add(double namount, String ncurrency) {
+		if(!available.contains(ncurrency)) {
+			throw new IllegalArgumentException();
+		}
 		if(currency.equals("EUR")) {
 			if(ncurrency.equals("USD")) {
 				this.amount += namount*1.29;
